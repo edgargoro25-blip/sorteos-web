@@ -3,21 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorteos Online Gratis</title>
+    <title>Sorteos singindragon</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🎉 Sorteo Rápido</h1>
-        <p>Pega tu lista de participantes (uno por línea):</p>
-        
-        <textarea id="participantes" placeholder="Juan&#10;María&#10;Carlos&#10;Ana"></textarea>
-        
-        <button id="btnSortear">¡Elegir Ganador!</button>
+    <div class="app-container">
+        <header>
+            <h1>🎉 Sorteos Creador</h1>
+            <p>Elige al ganador de tus sorteos de pases o gemas</p>
+        </header>
 
-        <div id="resultado" class="hidden">
-            <h2>🏆 Ganador:</h2>
-            <p id="ganadorTexto"></p>
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="manual"><i class="fa-solid fa-list"></i> Manual</button>
+            <button class="tab-btn" data-tab="youtube"><i class="fa-brands fa-youtube"></i> YouTube</button>
+            <button class="tab-btn" data-tab="tiktok"><i class="fa-brands fa-tiktok"></i> TikTok</button>
+        </div>
+
+        <div class="tab-content active" id="manual">
+            <textarea id="listaManual" placeholder="Pega los nombres aquí (uno por línea)...&#10;Ejemplo:&#10;Participante 1&#10;Participante 2"></textarea>
+        </div>
+
+        <div class="tab-content" id="youtube">
+            <div class="input-group">
+                <input type="text" id="ytUrl" placeholder="Link del video (Ej: https://youtube.com/watch?v=...)">
+                <button id="btnCargarYT" class="btn-secondary">Cargar Comentarios</button>
+            </div>
+            <p id="ytStatus" class="status-text"></p>
+        </div>
+
+        <div class="tab-content" id="tiktok">
+            <div class="input-group">
+                <input type="text" id="tkUrl" placeholder="Link del video de TikTok...">
+                <button id="btnCargarTK" class="btn-secondary" disabled>Próximamente</button>
+            </div>
+            <p class="status-text warning"><i class="fa-solid fa-triangle-exclamation"></i> La API de TikTok requiere un servidor o servicio externo para funcionar.</p>
+        </div>
+
+        <div class="action-area">
+            <p id="totalParticipantes">Participantes cargados: <strong>0</strong></p>
+            <button id="btnSortear" class="btn-primary" disabled><i class="fa-solid fa-trophy"></i> ¡Sortear Ganador!</button>
+        </div>
+
+        <div id="pantallaResultado" class="hidden">
+            <div class="winner-card">
+                <h3>🏆 ¡TENEMOS GANADOR! 🏆</h3>
+                <h2 id="nombreGanador">---</h2>
+                <p id="comentarioGanador"></p>
+                <button id="btnCerrarResultado" class="btn-secondary">Hacer otro sorteo</button>
+            </div>
         </div>
     </div>
 
