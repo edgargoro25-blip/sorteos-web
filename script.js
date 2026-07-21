@@ -1,5 +1,5 @@
 // --- CONFIGURACIÓN ---
-const YOUTUBE_API_KEY = 'AIzaSyD1Z9om2ffNKsVxpsM44iWba44yOJVacac'; 
+const YOUTUBE_API_KEY = AIzaSyD1Z9om2ffNKsVxpsM44iWba44yOJVacac; 
 
 // --- VARIABLES GLOBALES ---
 let participantesActuales = [];
