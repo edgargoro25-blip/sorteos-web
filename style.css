@@ -97,6 +97,37 @@ input {
     font-family: inherit;
 }
 
+.combine-option {
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #cbd5e1;
+    display: flex;
+    justify-content: center;
+}
+
+.combine-option label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #0f172a;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    transition: 0.3s ease;
+}
+
+.combine-option label:hover {
+    border-color: #6366f1;
+}
+
+.combine-option input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #6366f1;
+    cursor: pointer;
+}
+
 .btn-primary, .btn-secondary {
     border: none;
     padding: 12px;
