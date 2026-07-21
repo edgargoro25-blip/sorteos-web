@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorteos singindragon</title>
+    <title>Sorteos Creador</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -11,7 +11,7 @@
     <div class="app-container">
         <header>
             <h1>🎉 Sorteos Creador</h1>
-            <p>Elige al ganador de tus sorteos de pases o gemas</p>
+            <p>Elige al ganador de tus sorteos de forma fácil</p>
         </header>
 
         <div class="tabs">
@@ -20,10 +20,12 @@
             <button class="tab-btn" data-tab="tiktok"><i class="fa-brands fa-tiktok"></i> TikTok</button>
         </div>
 
+        <!-- Pestaña Manual -->
         <div class="tab-content active" id="manual">
-            <textarea id="listaManual" placeholder="Pega los nombres aquí (uno por línea)...&#10;Ejemplo:&#10;Participante 1&#10;Participante 2"></textarea>
+            <textarea id="listaManual" placeholder="Pega los nombres aquí (uno por línea)...&#10;Ejemplo:&#10;Juan Pérez&#10;María Gómez"></textarea>
         </div>
 
+        <!-- Pestaña YouTube -->
         <div class="tab-content" id="youtube">
             <div class="input-group">
                 <input type="text" id="ytUrl" placeholder="Link del video (Ej: https://youtube.com/watch?v=...)">
@@ -32,19 +34,22 @@
             <p id="ytStatus" class="status-text"></p>
         </div>
 
+        <!-- Pestaña TikTok -->
         <div class="tab-content" id="tiktok">
             <div class="input-group">
                 <input type="text" id="tkUrl" placeholder="Link del video de TikTok...">
-                <button id="btnCargarTK" class="btn-secondary" disabled>Próximamente</button>
+                <button id="btnCargarTK" class="btn-secondary" disabled>No disponible</button>
             </div>
-            <p class="status-text warning"><i class="fa-solid fa-triangle-exclamation"></i> La API de TikTok requiere un servidor o servicio externo para funcionar.</p>
+            <p class="status-text warning"><i class="fa-solid fa-triangle-exclamation"></i> TikTok bloquea las webs directas. Usa la opción manual exportando los comentarios.</p>
         </div>
 
+        <!-- Área de Acción -->
         <div class="action-area">
             <p id="totalParticipantes">Participantes cargados: <strong>0</strong></p>
             <button id="btnSortear" class="btn-primary" disabled><i class="fa-solid fa-trophy"></i> ¡Sortear Ganador!</button>
         </div>
 
+        <!-- Pantalla de Resultado -->
         <div id="pantallaResultado" class="hidden">
             <div class="winner-card">
                 <h3>🏆 ¡TENEMOS GANADOR! 🏆</h3>
