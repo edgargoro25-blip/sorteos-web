@@ -44,6 +44,68 @@ document.getElementById('btnCargarYT').addEventListener('click', async () => {
         return;
     }
 
+    // Extractor ultra flexible para cualquier URL de YouTube (Shorts, Watch, youtu.be)
+    let videoId = '';
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|shorts\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+
+    if (match && match[2].length === 11) {
+        videoId = match[2];
+    } else {
+        statusText.innerHTML = "❌ URL de YouTube no válida. Revisa el enlace.";
+        return;
+    }
+
+    if(YOUTUBE_API_KEY === 'TU_API_KEY_AQUI') {
+        statusText.innerHTML = "⚠️ Configura tu YOUTUBE_API_KEY en script.js para usar esta función.";
+        return;
+    }
+
+    statusText.innerHTML = "⏳ Cargando comentarios de YouTube...";
+    let comentariosObtenidos = [];
+    let nextPageToken = '';
+
+    try {
+        do {
+            const apiURL = `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&key=${YOUTUBE_API_KEY}&maxResults=100${nextPageToken ? `&pageToken=${nextPageToken}` : ''}`;
+            
+            const response = await fetch(apiURL);
+            const data = await response.json();
+            
+            if(data.error) throw new Error(data.error.message);
+
+            data.items.forEach(item => {
+                const comment = item.snippet.topLevelComment.snippet;
+                comentariosObtenidos.push({
+                    autor: comment.authorDisplayName,
+                    comentario: comment.textDisplay
+                });
+            });
+
+            nextPageToken = data.nextPageToken;
+        } while (nextPageToken);
+
+        // Filtrar duplicados para que cada usuario tenga 1 sola oportunidad
+        const unicos = [];
+        const nombresVistos = new Set();
+        for (const item of comentariosObtenidos) {
+            if (!nombresVistos.has(item.autor)) {
+                nombresVistos.add(item.autor);
+                unicos.push(item);
+            }
+        }
+
+        participantesYouTube = unicos;
+        statusText.innerHTML = `✅ ¡Éxito! Se cargaron ${participantesYouTube.length} participantes únicos.`;
+        actualizarContadorTotal();
+
+    } catch (error) {
+        statusText.innerHTML = `❌ Error: ${error.message}`;
+    }
+});
+
+
+
     // Extraer Video ID
     let videoId = '';
     const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
