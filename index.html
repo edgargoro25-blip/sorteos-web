@@ -22,16 +22,16 @@
 
         <!-- Pestaña Manual -->
         <div class="tab-content active" id="manual">
-            <textarea id="listaManual" placeholder="Pega los nombres aquí (uno por línea)...&#10;Ejemplo:&#10;Juan Pérez&#10;María Gómez"></textarea>
+            <textarea id="listaManual" placeholder="Pega los nombres aquí (uno por línea)...&#10;Cada línea es una oportunidad (boleto extra)."></textarea>
         </div>
 
         <!-- Pestaña YouTube -->
         <div class="tab-content" id="youtube">
             <div class="input-group">
-                <input type="text" id="ytUrl" placeholder="Link del video (Ej: https://youtube.com/watch?v=...)">
+                <input type="text" id="ytUrl" placeholder="Link del video o Short de YT...">
                 <button id="btnCargarYT" class="btn-secondary">Cargar Comentarios</button>
             </div>
-            <p id="ytStatus" class="status-text"></p>
+            <p id="ytStatus" class="status-text">Puedes cargar múltiples videos. Cada comentario = un boleto extra.</p>
         </div>
 
         <!-- Pestaña TikTok -->
@@ -40,11 +40,17 @@
                 <input type="text" id="tkUrl" placeholder="Link del video de TikTok...">
                 <button id="btnCargarTK" class="btn-secondary" disabled>No disponible</button>
             </div>
-            <p class="status-text warning"><i class="fa-solid fa-triangle-exclamation"></i> TikTok bloquea las webs directas. Usa la opción manual exportando los comentarios.</p>
+            <p class="status-text warning"><i class="fa-solid fa-triangle-exclamation"></i> TikTok bloquea las webs directas. Usa una página externa para exportar comentarios y pégalos en la pestaña Manual.</p>
         </div>
 
         <!-- Área de Acción -->
         <div class="action-area">
+            <div class="combine-option">
+                <label for="checkCombinar">
+                    <input type="checkbox" id="checkCombinar">
+                    <span>🔀 Combinar participaciones (Manual + YouTube)</span>
+                </label>
+            </div>
             <p id="totalParticipantes">Participantes cargados: <strong>0</strong></p>
             <button id="btnSortear" class="btn-primary" disabled><i class="fa-solid fa-trophy"></i> ¡Sortear Ganador!</button>
         </div>
