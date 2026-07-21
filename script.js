@@ -1,6 +1,6 @@
 // --- CONFIGURACIÓN DE YOUTUBE ---
 // Reemplaza esto con tu API Key de Google Cloud si quieres usar YouTube
-const YOUTUBE_API_KEY = AIzaSyD1Z9om2ffNKsVxpsM44iWba44yOJVacac; 
+const YOUTUBE_API_KEY = 'AIzaSyD1Z9om2ffNKsVxpsM44iWba44yOJVacac'; 
 
 // --- VARIABLES GLOBALES ---
 let participantesManual = [];
